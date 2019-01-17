@@ -41,4 +41,12 @@ public class EggCapsule : MonoBehaviour {
         isCooledDown = true;
         renderer.material.color = Color.black;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!isCooledDown)
+            Manager.Instance.updateScore();
+        else
+            Manager.Instance.updateDamagedEggs();
+    }
 }
