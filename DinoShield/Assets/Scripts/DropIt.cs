@@ -36,7 +36,8 @@ public class DropIt : MonoBehaviour {
             // go back to init position
             rb.velocity = new Vector3(0,0,0);
             currentPos = initPos;
-         
+            this.transform.SetPositionAndRotation(currentPos, initRot);
+
         }
 
         // if it collides with plate
@@ -46,7 +47,9 @@ public class DropIt : MonoBehaviour {
             // increase the score
 
             // go back to init position
+            rb.velocity = new Vector3(0, 0, 0);
             currentPos = initPos;
+            this.transform.SetPositionAndRotation(currentPos, initRot);
         }
     }
 
