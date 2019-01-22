@@ -29,8 +29,11 @@ public class DropHandler : MonoBehaviour {
 	
     // Update is called once per frame
 	void Update () {
-       if(canDrop)
-        StartCoroutine(RandDrop1(3.0f));
+        if (Manager.Instance.isGameStarted)
+        {
+            if (canDrop)
+                StartCoroutine(RandDrop1(3.0f));
+        }
 	}
 
     private IEnumerator RandDrop1(float waitTime) {

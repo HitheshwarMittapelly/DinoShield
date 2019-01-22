@@ -26,35 +26,42 @@ public class DropIt : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        // if it collides with egg
-        if (collision.gameObject.tag == "Egg")
+        if (Manager.Instance.isGameStarted)
         {
-            IsDropping = false;
-            Debug.Log("Collision with Egg");
-            // decrease the score/lives
-          
-            // go back to init position
-            rb.velocity = new Vector3(0,0,0);
-            currentPos = initPos;
-            this.transform.SetPositionAndRotation(currentPos, initRot);
+            // if it collides with egg
+            if (collision.gameObject.tag == "Egg")
+            {
+                IsDropping = false;
+                Debug.Log("Collision with Egg");
+                // decrease the score/lives
+                Manager.Instance.updateDamagedEggs();
 
-        }
+                SoundManagerScript.instance.PlaySingle(Manager.Instance.AsteroidHitEgg);
+                // go back to init position
+                rb.velocity = new Vector3(0, 0, 0);
+                currentPos = initPos;
+                this.transform.SetPositionAndRotation(currentPos, initRot);
 
-        // if it collides with plate
-        if (collision.gameObject.tag == "shield")
-        {
-            Debug.Log("Collision with plate");
-            // increase the score
+            }
 
-            // go back to init position
-            rb.velocity = new Vector3(0, 0, 0);
-            currentPos = initPos;
-            this.transform.SetPositionAndRotation(currentPos, initRot);
+            // if it collides with plate
+            if (collision.gameObject.tag == "shield")
+            {
+                Debug.Log("Collision with plate");
+                // increase the score
+                Manager.Instance.updateScore();
+                SoundManagerScript.instance.PlaySingle(Manager.Instance.AsteroidHitShield);
+                // go back to init position
+                rb.velocity = new Vector3(0, 0, 0);
+                currentPos = initPos;
+                this.transform.SetPositionAndRotation(currentPos, initRot);
+            }
         }
     }
 
     public void DropItBaby() {
         IsDropping = true;
+        SoundManagerScript.instance.PlaySingle(Manager.Instance.AsteroidRelease);
         rb.velocity = new Vector3(0,-2,0);
     }
 

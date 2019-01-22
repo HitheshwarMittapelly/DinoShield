@@ -30,7 +30,7 @@ public class SoundManagerScript : MonoBehaviour
    
     public void PlaySingle(AudioClip clip)
     {
-      
+        efxSource.Stop();
         efxSource.clip = clip;
 
 

@@ -10,6 +10,16 @@ public class Manager : MonoBehaviour {
     public Image lifeTwo;
     public Image lifeThree;
     public Text scoreText;
+    public GameObject StartScreenPanel;
+    public GameObject EndScreenPanel;
+
+    public AudioClip AsteroidHitShield;
+    public AudioClip AsteroidHitEgg;
+    public AudioClip ShieldUp;
+    public AudioClip AsteroidRelease;
+    public AudioClip bgm;
+
+    public bool isGameStarted;
     private int score = 0;
     private int damagedEggs = 0;
     public void Awake()
@@ -23,24 +33,44 @@ public class Manager : MonoBehaviour {
         }
 
         DontDestroyOnLoad(gameObject);
+        StartScreenPanel.SetActive(true);
+        StartScreenPanel.transform.SetAsLastSibling();
 
        
     }
     // Use this for initialization
     void Start () {
         scoreText.text = "";
+        isGameStarted = false;
         //scoreText.text = "Score :"+ score.ToString() ;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = "Score : " + score.ToString();
+        if (isGameStarted)
+        {
+            scoreText.text = "Score : " + score.ToString();
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartGame();
+            }
+        }
     }
 
     public void updateScore()
     {
         score++;
 
+    }
+
+    public void StartGame()
+    {
+        isGameStarted = true;
+        StartScreenPanel.SetActive(false);
+        //StartScreenPanel.transform.SetAsFirstSibling();
     }
     public void updateDamagedEggs()
     {
@@ -59,7 +89,13 @@ public class Manager : MonoBehaviour {
         }
         else if(damagedEggs>3)
         {
+            SoundManagerScript.instance.efxSource.Stop();
+            SoundManagerScript.instance.musicSource.Stop();
+            isGameStarted = false;
             Debug.Log("Game Over");
+            EndScreenPanel.SetActive(true);
+            EndScreenPanel.transform.SetAsLastSibling();
+            isGameStarted = false;
         }
     }
 }

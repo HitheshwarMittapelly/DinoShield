@@ -27,6 +27,7 @@ public class EggCapsule : MonoBehaviour {
         if (isCooledDown)
         {
             shield.transform.localScale = new Vector3(24,24,24);
+            //SoundManagerScript.instance.PlaySingle(Manager.Instance.ShieldUp);
             isCooledDown = false;
             renderer.material.color = Color.red;
             Invoke("CoolDown", 2f);
@@ -41,11 +42,17 @@ public class EggCapsule : MonoBehaviour {
         renderer.material.color = defaultColor;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!isCooledDown)
-            Manager.Instance.updateScore();
-        else
-            Manager.Instance.updateDamagedEggs();
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (!isCooledDown)
+    //    {
+           
+           
+    //    }
+    //    else
+    //    {
+           
+           
+    //    }
+    //}
 }
