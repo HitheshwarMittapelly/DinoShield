@@ -6,10 +6,8 @@ public class EggCapsule : MonoBehaviour {
 
     public int buttonNum;
     private enum Eggstates { targeted, free };
-
+    private Color defaultColor;
     private bool isCooledDown;
-    
-
 
     private Renderer renderer;
 
@@ -18,13 +16,10 @@ public class EggCapsule : MonoBehaviour {
     {
         isCooledDown = true;
         renderer = GetComponent<Renderer>();
+        defaultColor = renderer.material.color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
     public void OnEggPress()
     {
         if (isCooledDown)
@@ -32,14 +27,14 @@ public class EggCapsule : MonoBehaviour {
             isCooledDown = false;
             renderer.material.color = Color.red;
             Invoke("CoolDown", 2f);
-
+    
         }
     }
 
     private void CoolDown()
     {
         isCooledDown = true;
-        renderer.material.color = Color.black;
+        renderer.material.color = defaultColor;
     }
 
     private void OnCollisionEnter(Collision collision)

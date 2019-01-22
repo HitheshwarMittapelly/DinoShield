@@ -69,6 +69,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4534986728020110}
+  - component: {fileID: 136940916334849468}
+  - component: {fileID: 114971583297390320}
+  - component: {fileID: 54708525970936232}
+  - component: {fileID: 114584753682445932}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Untagged
@@ -95,8 +99,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170563014528878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0826733, y: 0.008611217, z: 0.001021142, w: 0.996539}
+  m_LocalPosition: {x: -4.101, y: 2.349, z: 3.607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4614247663127864}
@@ -111,8 +115,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125690715620032}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.06, y: 0.39, z: -0}
+  m_LocalScale: {x: 0.4905747, y: 0.4905747, z: 0.4905747}
   m_Children: []
   m_Father: {fileID: 4534986728020110}
   m_RootOrder: 0
@@ -138,7 +142,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053442811968804}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -173,6 +177,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053442811968804}
   m_Mesh: {fileID: 4300000, guid: 5ce157be0858f894abab9f212c45d031, type: 3}
+--- !u!54 &54708525970936232
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170563014528878}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!95 &95355070627623224
 Animator:
   serializedVersion: 3
@@ -191,6 +210,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114584753682445932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170563014528878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a285176ad20b14bb57d08aef16a98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54708525970936232}
+--- !u!114 &114971583297390320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170563014528878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a285176ad20b14bb57d08aef16a98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+--- !u!136 &136940916334849468
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170563014528878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4224185
+  m_Height: 1.1256082
+  m_Direction: 1
+  m_Center: {x: 0.073214054, y: 0.8428041, z: -0.04237763}
 --- !u!198 &198651016743706324
 ParticleSystem:
   m_ObjectHideFlags: 1
