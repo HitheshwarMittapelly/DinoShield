@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour {
 
     public static Manager Instance = null;
-
+    public Image lifeOne;
+    public Image lifeTwo;
+    public Image lifeThree;
     public Text scoreText;
     private int score = 0;
     private int damagedEggs = 0;
@@ -32,7 +34,7 @@ public class Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = "Score :" + score.ToString();
+        scoreText.text = "Score : " + score.ToString();
     }
 
     public void updateScore()
@@ -42,8 +44,20 @@ public class Manager : MonoBehaviour {
     }
     public void updateDamagedEggs()
     {
+       
         damagedEggs++;
-        if(damagedEggs>3)
+        if(damagedEggs == 1)
+        {
+            lifeThree.CrossFadeAlpha(0f, 0.1f, false);
+        }else if(damagedEggs == 2)
+        {
+            lifeTwo.CrossFadeAlpha(0f, 0.1f, false);
+        }
+        else if(damagedEggs == 3)
+        {
+            lifeOne.CrossFadeAlpha(0f, 0.1f, false);
+        }
+        else if(damagedEggs>3)
         {
             Debug.Log("Game Over");
         }
