@@ -30,16 +30,21 @@ public class DropHandler : MonoBehaviour {
     // Update is called once per frame
 	void Update () {
        if(canDrop)
-        StartCoroutine(RandDrop(4.0f));
+        StartCoroutine(RandDrop1(3.0f));
 	}
 
-    private IEnumerator RandDrop(float waitTime) {
+    private IEnumerator RandDrop1(float waitTime) {
         canDrop = false;
         int toDrop = Random.Range(0, 13);
        // Debug.Log(toDrop);
+        TriggerDrop[toDrop].DropItBaby();
+      //  yield return new WaitForSeconds(waitTime);
+        toDrop = Random.Range(0, 13);
+        // Debug.Log(toDrop);
         TriggerDrop[toDrop].DropItBaby();
         yield return new WaitForSeconds(waitTime);
         canDrop = true;
     }
   
+
 }

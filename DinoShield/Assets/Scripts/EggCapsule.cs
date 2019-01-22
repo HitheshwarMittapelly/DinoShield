@@ -8,6 +8,7 @@ public class EggCapsule : MonoBehaviour {
     private enum Eggstates { targeted, free };
     private Color defaultColor;
     private bool isCooledDown;
+    public GameObject shield;
 
     private Renderer renderer;
 
@@ -17,6 +18,7 @@ public class EggCapsule : MonoBehaviour {
         isCooledDown = true;
         renderer = GetComponent<Renderer>();
         defaultColor = renderer.material.color;
+      //  shield = transform.Find("shield").gameObject;
     }
 
    
@@ -24,6 +26,7 @@ public class EggCapsule : MonoBehaviour {
     {
         if (isCooledDown)
         {
+            shield.transform.localScale = new Vector3(24,24,24);
             isCooledDown = false;
             renderer.material.color = Color.red;
             Invoke("CoolDown", 2f);
@@ -33,6 +36,7 @@ public class EggCapsule : MonoBehaviour {
 
     private void CoolDown()
     {
+        shield.transform.localScale = new Vector3(10, 10, 10);
         isCooledDown = true;
         renderer.material.color = defaultColor;
     }
