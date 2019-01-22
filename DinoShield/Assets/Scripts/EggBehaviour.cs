@@ -11,6 +11,8 @@ public class EggBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
         if(Input.GetKeyDown(KeyCode.Z))
         {
             GetCorrespondingEgg(0).GetComponent<EggScript>().OnEggPress();
