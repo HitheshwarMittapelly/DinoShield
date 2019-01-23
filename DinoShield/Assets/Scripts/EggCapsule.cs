@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EggCapsule : MonoBehaviour {
 
     public int buttonNum;
@@ -10,6 +11,7 @@ public class EggCapsule : MonoBehaviour {
     private bool isCooledDown;
     public GameObject shield;
 
+    public ParticleSystem eggPlosion;
     private Renderer renderer;
 
 
@@ -30,6 +32,7 @@ public class EggCapsule : MonoBehaviour {
             //SoundManagerScript.instance.PlaySingle(Manager.Instance.ShieldUp);
             isCooledDown = false;
             renderer.material.color = Color.red;
+            Manager.Instance.currentlyActiveEggs++;
             Invoke("CoolDown", 2f);
     
         }
@@ -37,9 +40,11 @@ public class EggCapsule : MonoBehaviour {
 
     private void CoolDown()
     {
+        
         shield.transform.localScale = new Vector3(10, 10, 10);
         isCooledDown = true;
         renderer.material.color = defaultColor;
+        Manager.Instance.currentlyActiveEggs--;
     }
 
     //private void OnCollisionEnter(Collision collision)

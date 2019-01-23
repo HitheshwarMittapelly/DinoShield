@@ -15,7 +15,7 @@ public class EggBehaviorThreeD : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Manager.Instance.isGameStarted)
+        if (Manager.Instance.isGameStarted && Manager.Instance.currentlyActiveEggs <= 3)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {

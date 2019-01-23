@@ -35,7 +35,7 @@ public class DropIt : MonoBehaviour {
                 Debug.Log("Collision with Egg");
                 // decrease the score/lives
                 Manager.Instance.updateDamagedEggs();
-
+                collision.collider.gameObject.GetComponent<EggCapsule>().eggPlosion.Play();
                 SoundManagerScript.instance.PlaySingle(Manager.Instance.AsteroidHitEgg);
                 // go back to init position
                 rb.velocity = new Vector3(0, 0, 0);

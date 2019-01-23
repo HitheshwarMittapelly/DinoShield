@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour {
     public Image lifeTwo;
     public Image lifeThree;
     public Text scoreText;
+    public Text EndGameScore;
     public GameObject StartScreenPanel;
     public GameObject EndScreenPanel;
 
@@ -18,7 +19,7 @@ public class Manager : MonoBehaviour {
     public AudioClip ShieldUp;
     public AudioClip AsteroidRelease;
     public AudioClip bgm;
-
+    public int currentlyActiveEggs;
     public bool isGameStarted;
     private int score = 0;
     private int damagedEggs = 0;
@@ -42,6 +43,7 @@ public class Manager : MonoBehaviour {
     void Start () {
         scoreText.text = "";
         isGameStarted = false;
+        currentlyActiveEggs = 0;
         //scoreText.text = "Score :"+ score.ToString() ;
 	}
 	
@@ -50,6 +52,7 @@ public class Manager : MonoBehaviour {
         if (isGameStarted)
         {
             scoreText.text = "Score : " + score.ToString();
+            
         }
         else
         {
@@ -93,6 +96,7 @@ public class Manager : MonoBehaviour {
             SoundManagerScript.instance.musicSource.Stop();
             isGameStarted = false;
             Debug.Log("Game Over");
+            EndGameScore.text = "Your score is: " + score.ToString();
             EndScreenPanel.SetActive(true);
             EndScreenPanel.transform.SetAsLastSibling();
             isGameStarted = false;
